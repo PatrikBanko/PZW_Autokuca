@@ -7,7 +7,11 @@ from .models import *
 from django.views.generic import ListView
 
 ## Create your views here.
-def homepage(request):
+
+def prijava(request):
+    return render(request, "./login.html")
+
+def homepage_neregistrirani(request):
     return render(request, "./homepage_neregistrirani.html")
 
 def vozila(request):
