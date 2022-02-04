@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    <title>Autokuca</title>
+</head>
+<body>
+    <h1>Dobrodošli u Autokuću!</h1>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Početna</a></li>
+            <li><a href="/vozila">Vozila</a></li>
+            <li><a href="/proizvodaci">Proizvođači</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+    <div id="content">
+        {% block content %}{% endblock content %}
+    </div>
+</body>
+</html>

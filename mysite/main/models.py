@@ -14,10 +14,10 @@ class Vozilo( models.Model ):
     vrsta_vozila = models.CharField( max_length= 30 )
     naziv_proizvodaca = models.ForeignKey( Proizvodac, on_delete= models.CASCADE )
     model_vozila = models.CharField( max_length= 30 )
-    godina_proizvodnje = models.CharField( max_length= 10 )
-    kilometraza = models.CharField( max_length= 25 )
+    godina_proizvodnje =models.IntegerField()
+    kilometraza = models.IntegerField()
     boja = models.CharField( max_length= 20 )
-    cijena = models.CharField( max_length= 25 )
+    cijena = models.IntegerField()
 
     def __str__( self ):
         return self.sifra_vozila

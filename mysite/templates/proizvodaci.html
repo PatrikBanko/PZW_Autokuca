@@ -1,0 +1,11 @@
+{% extends 'homepage.html' %}
+{% block content %}
+    <h2>Popis proizvođača:</h2>
+    {% for proizvodac in proizvodaci %}
+        <ul>
+            <li>Šifra proizvođača: {{proizvodac.sifra_proizvodaca}}</li>
+            <li>Naziv proizvođača: {{proizvodac.naziv_proizvodaca}}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
+
