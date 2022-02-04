@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Prijava korisnika
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="POST" class="form-group">
+        {% csrf_token%}
+        {{ form|crispy }}
+        <p>Nema računa? Nema problema! Kreiraj ga <a href="/registracija">ovdje</a>!</p>
+        <p><a href="/homepage_neregistrirani">Nastavi kao gost</a></p>
+        <button type="submit" class="btn btn-success">
+            Prijavi se
+        </button>
+    </form>
+{% endblock %}

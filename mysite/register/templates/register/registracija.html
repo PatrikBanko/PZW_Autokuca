@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block title %} 
+<h2>Kreirajte korisnički račun</h2>
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %} 
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Kreiraj</button>
+        <p>Već imaš račun? <a href="/login">Prijavi se</a></p>
+        <p><a href="/homepage_neregistrirani">Nastavi kao gost</a></p>
+    </form>
+{% endblock %}
