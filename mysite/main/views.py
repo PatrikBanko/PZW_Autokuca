@@ -8,7 +8,7 @@ from django.views.generic import ListView
 
 ## Create your views here.
 def homepage(request):
-    return render(request, "./homepage.html")
+    return render(request, "./homepage_neregistrirani.html")
 
 def vozila(request):
     try: 
@@ -16,7 +16,7 @@ def vozila(request):
         context={"vozila":vozila}
     except Vozilo.DoesNotExist:
         raise Http404("Vozilo ne postoji!")
-    return render(request, "./vozila.html", context=context)
+    return render(request, "./vozila_neregistrirani.html", context=context)
 
 def proizvodaci(request):
     try: 
@@ -24,6 +24,6 @@ def proizvodaci(request):
         context={"proizvodaci":proizvodaci}
     except Proizvodac.DoesNotExist:
         raise Http404("Proizvodac ne postoji!")
-    return render(request, "./proizvodaci.html", context=context)
+    return render(request, "./proizvodaci_neregistrirani.html", context=context)
 
     
