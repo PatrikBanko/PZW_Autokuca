@@ -8,7 +8,7 @@ from django.views.generic import ListView
 
 ## Create your views here.
 def homepage(request):
-    return render(request, "./homepage.html")
+    return render(request, "./index.html")
 
 def vozila(request):
     try: 
