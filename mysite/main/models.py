@@ -7,7 +7,7 @@ class Proizvodac( models.Model ):
     naziv_proizvodaca = models.CharField( max_length= 50 )
 
     def __str__( self ):
-        return self.sifra_proizvodaca
+        return self.naziv_proizvodaca
 
 class Vozilo( models.Model ):
     sifra_vozila = models.CharField( max_length= 10 )
@@ -20,7 +20,7 @@ class Vozilo( models.Model ):
     cijena = models.IntegerField()
 
     def __str__( self ):
-        return self.sifra_vozila
+        return self.model_vozila
 
 class Korisnik( models.Model ):
     username = models.CharField( max_length= 50 )

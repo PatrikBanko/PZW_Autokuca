@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" name="Potvrdi" placeholder="Potvrdi">
+</form>
+
+{% endblock %}

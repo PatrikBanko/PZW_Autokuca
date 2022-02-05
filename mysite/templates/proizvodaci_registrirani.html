@@ -1,0 +1,16 @@
+{% include 'homepage_registrirani.html' %}
+{% block podaci %}
+    <h2>Popis proizvođača:</h2>
+    <div id="unos_proizvodaci">
+        <button type="submit" class="btn btn-success">
+            <a href="/novi_unos_proizvodac">Dodaj proizvođača</a>
+        </button>
+    </div>
+    {% for proizvodac in proizvodaci %}
+        <ul>
+            <li>Šifra proizvođača: {{proizvodac.sifra_proizvodaca}}</li>
+            <li>Naziv proizvođača: {{proizvodac.naziv_proizvodaca}}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}
+

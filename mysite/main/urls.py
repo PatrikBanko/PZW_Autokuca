@@ -11,5 +11,9 @@ urlpatterns = [
     path('homepage_neregistrirani/', views.homepage_neregistrirani, name='homepage_neregistrirani'),
     path('vozila_neregistrirani/', views.vozila_neregistrirani, name='vozila_neregistrirani'),
     path('proizvodaci_neregistrirani/', views.proizvodaci_neregistrirani, name='proizvodaci_neregistrirani'),
-    
+
+    path('homepage_registrirani/', views.homepage_registrirani, name='homepage_registrirani'),
+    path('proizvodaci_registrirani/', views.proizvodaci_registrirani, name='proizvodaci_registrirani'),
+    path('novi_unos_vozilo/', views.noviUnosVozilo, name="novi_unos_vozilo"),
+    path('novi_unos_proizvodac/', views.noviUnosProizvodac, name="novi_unos_proizvodaci"),
 ]

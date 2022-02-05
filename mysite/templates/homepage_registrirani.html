@@ -2,16 +2,16 @@
     {% block title %}
     <h2>Početna stranica</h2>
     <button>
-        <a href="/login">Prijavi se</a>
+        <a href="/logout">Odjavi se</a>
     </button>
     {% endblock %}
 
     <div id="content">
         {% block content %}
         <ul>
-            <li><a href="/homepage_neregistrirani">Početna</a></li>
-            <li><a href="/vozila_neregistrirani">Vozila</a></li>
-            <li><a href="/proizvodaci_neregistrirani">Proizvođači</a></li>
+            <li><a href="/homepage_registrirani">Početna</a></li>
+            <li><a href="/vozila_registrirani">Vozila</a></li>
+            <li><a href="/proizvodaci_registrirani">Proizvođači</a></li>
         </ul>
         {% endblock content %}
     </div>

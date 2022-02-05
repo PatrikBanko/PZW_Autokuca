@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% include 'homepage_registrirani.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<p>Želite li sigurno obrisati "{{ vozilo }}"?</p>
+
+<form action="{% url 'delete_vozilo' vozilo.sifra_vozila %}" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'vozila_registrirani' %}">Odustani</a>
+    <input type="submit" name="Potvrdi" placeholder="Potvrdi">
+</form>
+
+{% endblock %}

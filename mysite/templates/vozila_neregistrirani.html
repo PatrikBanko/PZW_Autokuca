@@ -1,6 +1,7 @@
 {% include 'homepage_neregistrirani.html' %}
 {% block podaci %}
     <h2>Popis vozila:</h2>
+    
     {% for vozilo in vozila %}
         <ul>
             <li>Šifra vozila: {{vozilo.sifra_vozila}}</li>

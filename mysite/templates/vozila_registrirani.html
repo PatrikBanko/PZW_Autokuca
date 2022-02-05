@@ -1,0 +1,74 @@
+{% include 'homepage_registrirani.html' %} {% block podaci %}
+<h2>Popis vozila:</h2>
+<div id="unos_vozilo">
+	<button type="submit" class="btn btn-success">
+		<a href="/novi_unos_vozilo">Dodaj vozilo</a>
+	</button>
+</div>
+
+<table>
+	<tr>
+		<th>Šifra vozila</th>
+		<th>Vrsta vozila</th>
+		<th>Naziv proizvođača</th>
+		<th>Moddel vozila</th>
+		<th>Godina proizvodnje</th>
+		<th>Kilomethaža</th>
+		<th>Boja</th>
+		<th>Cijena</th>
+        <th></th>
+        <th></th>
+	</tr>
+    {% for vozilo in vozila %}
+	<tr>
+		<td>{{vozilo.sifra_vozila}}</td>
+		<td>{{vozilo.vrsta_vozila}}</td>
+		<td>{{vozilo.naziv_proizvodaca}}</td>
+		<td>{{vozilo.model_vozila}}</td>
+		<td>{{vozilo.godina_proizvodnje}}</td>
+		<td>{{vozilo.kilometraza}}</td>
+		<td>{{vozilo.boja}}</td>
+		<td>{{vozilo.cijena}}</td>
+
+        <td>
+            <div id="update_vozilo">
+                <button type="submit" class="btn btn-success">
+                    <a href="{% url 'update_vozilo' vozilo.sifra_vozila %}">Uredi</a>
+                </button>
+            </div>
+        </td>
+        <td>
+            <div id="delete_vozilo">
+                <button type="submit" class="btn btn-success">
+                    <a href="{% url 'delete_vozilo' vozilo.sifra_vozila %}">Obriši</a>
+                </button>
+            </div>
+        </td>
+	</tr>
+	{% endfor %}
+</table>
+<!-- <ul>
+        <li>Šifra vozila: {{vozilo.sifra_vozila}}</li>
+        <li>Vrsta vozila: {{vozilo.vrsta_vozila}}</li>
+        <li>Naziv proizvođača: {{vozilo.naziv_proizvodaca}}</li>
+        <li>Moddel vozila: {{vozilo.model_vozila}}</li>
+        <li>Godina proizvodnje: {{vozilo.godina_proizvodnje}}</li>
+        <li>Kilometraža: {{vozilo.kilometraza}}</li>
+        <li>Boja: {{vozilo.boja}}</li>
+        <li>Cijena: {{vozilo.cijena}}</li>
+    </ul> -->
+{% endblock %}
+<style>
+	table {
+		width: 40%;
+		border: 1px solid #000;
+	}
+
+	th,
+	td {
+		width: 25%;
+		text-align: left;
+		vertical-align: top;
+		border: 1px solid #000;
+	}
+</style>

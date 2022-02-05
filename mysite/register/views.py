@@ -8,6 +8,7 @@ def registracija(response):
         form = UserCreationForm(response.POST)
         if form.is_valid():
             form.save()
+            print("Uspjesno")
         #TODO dodati redirect     
         return redirect("/")
     else:

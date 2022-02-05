@@ -16,10 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from register import views as v
+from main import views as vm
 
 urlpatterns = [
     path('', include('main.urls')), #dodajemo urls
     path('admin/', admin.site.urls),
     path('registracija/', v.registracija, name="registracija"),
     path('', include("django.contrib.auth.urls")),
+    path('update_vozilo/<str:pk>/', vm.updateVozilo, name="update_vozilo"),
+    path('delete_vozilo/<str:pk>/', vm.deleteVozilo, name="delete_vozilo"),
+    path('vozila_registrirani/', vm.vozila_registrirani, name='vozila_registrirani'),
+
+
+
+    
 ]
