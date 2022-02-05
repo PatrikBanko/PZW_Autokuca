@@ -14,7 +14,7 @@ def prijava(request):
 def homepage_neregistrirani(request):
     return render(request, "./homepage_neregistrirani.html")
 
-def vozila(request):
+def vozila_neregistrirani(request):
     try: 
         vozila=Vozilo.objects.all()
         context={"vozila":vozila}
@@ -22,7 +22,7 @@ def vozila(request):
         raise Http404("Vozilo ne postoji!")
     return render(request, "./vozila_neregistrirani.html", context=context)
 
-def proizvodaci(request):
+def proizvodaci_neregistrirani(request):
     try: 
         proizvodaci=Proizvodac.objects.all()
         context={"proizvodaci":proizvodaci}

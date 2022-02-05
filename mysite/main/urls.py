@@ -9,7 +9,7 @@ urlpatterns = [
 
     path('', v.registracija, name="registracija"),
     path('homepage_neregistrirani/', views.homepage_neregistrirani, name='homepage_neregistrirani'),
-    path('vozila/', views.vozila, name='vozila'),
-    path('proizvodaci/', views.proizvodaci, name='proizvodaci'),
+    path('vozila_neregistrirani/', views.vozila_neregistrirani, name='vozila_neregistrirani'),
+    path('proizvodaci_neregistrirani/', views.proizvodaci_neregistrirani, name='proizvodaci_neregistrirani'),
     
 ]
