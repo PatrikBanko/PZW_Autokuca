@@ -4,3 +4,4 @@ cattrs==1.10.0
 Django==4.0.2
 django-crispy-forms==1.14.0
 sqlparse==0.4.2
+django-filter==21.1

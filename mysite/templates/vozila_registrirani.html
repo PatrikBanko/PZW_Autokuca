@@ -16,10 +16,13 @@
 		<th>Kilometraža (km)</th>
 		<th>Boja</th>
 		<th>Cijena (€)</th>
-        <th></th>
-        <th></th>
+
+		{% if user.is_superuser %}
+		<th></th>
+		<th></th>
+		{% endif %}
 	</tr>
-    {% for vozilo in vozila %}
+	{% for vozilo in vozila %}
 	<tr>
 		<td>{{vozilo.sifra_vozila}}</td>
 		<td>{{vozilo.vrsta_vozila}}</td>
@@ -30,33 +33,25 @@
 		<td>{{vozilo.boja}}</td>
 		<td>{{vozilo.cijena}}</td>
 
-        <td>
-            <div id="update_vozilo">
-                <button type="submit" class="btn btn-success">
-                    <a href="{% url 'update_vozilo' vozilo.sifra_vozila %}">Uredi</a>
-                </button>
-            </div>
-        </td>
-        <td>
-            <div id="delete_vozilo">
-                <button type="submit" class="btn btn-success">
-                    <a href="{% url 'delete_vozilo' vozilo.sifra_vozila %}">Obriši</a>
-                </button>
-            </div>
-        </td>
+		{% if user.is_superuser %}
+		<td>
+			<div id="update_vozilo">
+				<button type="submit" class="btn btn-success">
+					<a href="{% url 'update_vozilo' vozilo.sifra_vozila %}">Uredi</a>
+				</button>
+			</div>
+		</td>
+		<td>
+			<div id="delete_vozilo">
+				<button type="submit" class="btn btn-success">
+					<a href="{% url 'delete_vozilo' vozilo.sifra_vozila %}">Obriši</a>
+				</button>
+			</div>
+		</td>
+		{% endif %}
 	</tr>
 	{% endfor %}
 </table>
-<!-- <ul>
-        <li>Šifra vozila: {{vozilo.sifra_vozila}}</li>
-        <li>Vrsta vozila: {{vozilo.vrsta_vozila}}</li>
-        <li>Naziv proizvođača: {{vozilo.naziv_proizvodaca}}</li>
-        <li>Moddel vozila: {{vozilo.model_vozila}}</li>
-        <li>Godina proizvodnje: {{vozilo.godina_proizvodnje}}</li>
-        <li>Kilometraža: {{vozilo.kilometraza}}</li>
-        <li>Boja: {{vozilo.boja}}</li>
-        <li>Cijena: {{vozilo.cijena}}</li>
-    </ul> -->
 {% endblock %}
 <style>
 	table {

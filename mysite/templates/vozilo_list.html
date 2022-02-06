@@ -1,12 +1,9 @@
-{% include 'homepage_registrirani.html' %} {% block podaci %}
-
-{% block content %}
+{% include 'homepage_registrirani.html' %} {% block podaci %} {% block content%}
 <h2>Filtriranje vozila</h2>
-  <form method="get">
-    {{ filter.form.as_p }}
-    <button type="submit">Traži</button>
-  </form>
-
+<form method="get">
+	{{ filter.form.as_p }}
+	<button type="submit">Traži</button>
+</form>
 
 <table>
 	<tr>
@@ -19,7 +16,7 @@
 		<th>Boja</th>
 		<th>Cijena (€)</th>
 	</tr>
-    {% for vozilo in filter.qs %}
+	{% for vozilo in filter.qs %}
 	<tr>
 		<td>{{vozilo.sifra_vozila}}</td>
 		<td>{{vozilo.vrsta_vozila}}</td>
@@ -29,13 +26,11 @@
 		<td>{{vozilo.kilometraza}}</td>
 		<td>{{vozilo.boja}}</td>
 		<td>{{vozilo.cijena}}</td>
-
 	</tr>
 	{% endfor %}
 </table>
 
-{% endblock %}
-{% endblock %}
+{% endblock %} {% endblock %}
 
 <style>
 	table {
