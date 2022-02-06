@@ -7,6 +7,9 @@ from django.http import HttpResponse, HttpResponseNotFound
 from .models import *
 from django.views.generic import ListView
 from .forms import *
+from django.contrib.auth.models import *
+from .filters import VoziloFilter
+
 
 ## Create your views here.
 
@@ -132,3 +135,15 @@ def deleteProizvodac(request, pk):
 
     context = {"proizvodac": proizvodac}
     return render(request, "./delete_proizvodac.html", context)
+
+
+def filter(request):
+    vozilo_list = Vozilo.objects.all()
+    vozilo_filter = VoziloFilter(request.GET, queryset=vozilo_list)
+    return render(request, 'vozilo_list.html', {'filter': vozilo_filter})
+
+def filter_ne_registrirani(request):
+    vozilo_list = Vozilo.objects.all()
+    vozilo_filter = VoziloFilter(request.GET, queryset=vozilo_list)
+    return render(request, 'vozilo_list_neregistrirani.html', {'filter': vozilo_filter})
+

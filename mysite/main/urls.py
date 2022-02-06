@@ -2,6 +2,7 @@ from xml.etree.ElementInclude import include
 from django.urls import path, include
 from . import views
 from register import views as v
+from django.conf.urls import url
 
 app_name = 'main'  # here for namespacing of urls.
 
@@ -16,4 +17,7 @@ urlpatterns = [
     path('proizvodaci_registrirani/', views.proizvodaci_registrirani, name='proizvodaci_registrirani'),
     path('novi_unos_vozilo/', views.noviUnosVozilo, name="novi_unos_vozilo"),
     path('novi_unos_proizvodac/', views.noviUnosProizvodac, name="novi_unos_proizvodaci"),
+    url(r'^filter/$', views.filter, name='filter'), 
+    url(r'^filter_ne_registrirani/$', views.filter_ne_registrirani, name='filter_ne_registrirani'), 
 ]
+

@@ -1,0 +1,53 @@
+{% include 'homepage_registrirani.html' %} {% block podaci %}
+
+{% block content %}
+<h2>Filtriranje vozila</h2>
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Traži</button>
+  </form>
+
+
+<table>
+	<tr>
+		<th>Šifra vozila</th>
+		<th>Vrsta vozila</th>
+		<th>Naziv proizvođača</th>
+		<th>Model vozila</th>
+		<th>Godina proizvodnje</th>
+		<th>Kilometraža (km)</th>
+		<th>Boja</th>
+		<th>Cijena (€)</th>
+	</tr>
+    {% for vozilo in filter.qs %}
+	<tr>
+		<td>{{vozilo.sifra_vozila}}</td>
+		<td>{{vozilo.vrsta_vozila}}</td>
+		<td>{{vozilo.naziv_proizvodaca}}</td>
+		<td>{{vozilo.model_vozila}}</td>
+		<td>{{vozilo.godina_proizvodnje}}</td>
+		<td>{{vozilo.kilometraza}}</td>
+		<td>{{vozilo.boja}}</td>
+		<td>{{vozilo.cijena}}</td>
+
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}
+{% endblock %}
+
+<style>
+	table {
+		width: 40%;
+		border: 1px solid #000;
+	}
+
+	th,
+	td {
+		width: 25%;
+		text-align: left;
+		vertical-align: top;
+		border: 1px solid #000;
+	}
+</style>
