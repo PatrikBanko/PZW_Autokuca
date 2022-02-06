@@ -6,11 +6,49 @@
             <a href="/novi_unos_proizvodac">Dodaj proizvođača</a>
         </button>
     </div>
-    {% for proizvodac in proizvodaci %}
-        <ul>
-            <li>Šifra proizvođača: {{proizvodac.sifra_proizvodaca}}</li>
-            <li>Naziv proizvođača: {{proizvodac.naziv_proizvodaca}}</li>
-        </ul>
-    {% endfor %}
+
+
+    <table>
+        <tr>
+            <th>Šifra proizvođača</th>
+            <th>Naziv proizvođača</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for proizvodac in proizvodaci %}
+        <tr>
+            <td>{{proizvodac.sifra_proizvodaca}}</td>
+            <td>{{proizvodac.naziv_proizvodaca}}</td>
+            <td>
+                <div id="update_proizvodac">
+                    <button type="submit" class="btn btn-success">
+                        <a href="{% url 'update_proizvodac' proizvodac.sifra_proizvodaca %}">Uredi</a>
+                    </button>
+                </div>
+            </td>
+            <td>
+                <div id="delete_proizvodac">
+                    <button type="submit" class="btn btn-success">
+                        <a href="{% url 'delete_proizvodac' proizvodac.sifra_proizvodaca %}">Obriši</a>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
+<style>
+	table {
+		width: 40%;
+		border: 1px solid #000;
+	}
+
+	th,
+	td {
+		width: 25%;
+		text-align: left;
+		vertical-align: top;
+		border: 1px solid #000;
+	}
+</style>
 

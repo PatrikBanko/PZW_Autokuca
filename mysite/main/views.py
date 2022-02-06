@@ -108,3 +108,27 @@ def deleteVozilo(request, pk):
 
     context = {"vozilo": vozilo}
     return render(request, "./delete_vozilo.html", context)
+
+def updateProizvodac(request, pk):
+    proizvodac = Proizvodac.objects.get(sifra_proizvodaca=pk)
+    form = ProizvodacForm(instance=proizvodac)
+
+    if request.method == "POST":
+        form = ProizvodacForm(request.POST, instance=proizvodac)
+        if form.is_valid():
+            form.save()
+            return redirect("/proizvodaci_registrirani")
+
+    context = {"form": form}
+    return render(request, "./novi_unos_proizvodac.html", context=context)
+
+
+def deleteProizvodac(request, pk):
+    proizvodac = Proizvodac.objects.get(sifra_proizvodaca=pk)
+
+    if request.method=='POST':
+        proizvodac.delete()
+        return redirect('/proizvodaci_registrirani')
+
+    context = {"proizvodac": proizvodac}
+    return render(request, "./delete_proizvodac.html", context)

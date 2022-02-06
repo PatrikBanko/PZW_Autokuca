@@ -4,11 +4,11 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<p>Želite li sigurno obrisati "{{ vozilo }}"?</p>
+<p>Želite li sigurno obrisati "{{ proizvodac }}"?</p>
 
-<form action="{% url 'delete_vozilo' vozilo.sifra_vozila %}" method="POST">
+<form action="{% url 'delete_proizvodac' proizvodac.sifra_proizvodaca %}" method="POST">
     {% csrf_token %}
-    <a href="{% url 'vozila_registrirani' %}">Odustani</a>
+    <a href="{% url 'proizvodaci_registrirani' %}">Odustani</a>
     <input type="submit" name="Potvrdi" value="Potvrdi">
 </form>
 

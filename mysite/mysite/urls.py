@@ -26,6 +26,9 @@ urlpatterns = [
     path('update_vozilo/<str:pk>/', vm.updateVozilo, name="update_vozilo"),
     path('delete_vozilo/<str:pk>/', vm.deleteVozilo, name="delete_vozilo"),
     path('vozila_registrirani/', vm.vozila_registrirani, name='vozila_registrirani'),
+    path('update_proizvodac/<str:pk>/', vm.updateProizvodac, name="update_proizvodac"),
+    path('delete_proizvodac/<str:pk>/', vm.deleteProizvodac, name="delete_proizvodac"),
+    path('proizvodaci_registrirani/', vm.proizvodaci_registrirani, name='proizvodaci_registrirani'),
 
 
 
