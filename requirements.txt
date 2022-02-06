@@ -1,0 +1,6 @@
+asgiref==3.5.0
+attrs==21.4.0
+cattrs==1.10.0
+Django==4.0.2
+django-crispy-forms==1.14.0
+sqlparse==0.4.2
