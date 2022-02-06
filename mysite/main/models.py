@@ -1,5 +1,9 @@
 from django.db import models
 from django.db.models.fields import CharField
+from django.contrib.auth.models import User
+from django.utils import timezone
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 class Proizvodac( models.Model ):
@@ -22,20 +26,39 @@ class Vozilo( models.Model ):
     def __str__( self ):
         return self.model_vozila
 
-class Korisnik( models.Model ):
-    username = models.CharField( max_length= 50 )
-    password = models.CharField( max_length=  50)
-    uloga = models.CharField( max_length= 30 )
+class UserProfile( models.Model ):
+    user = models.OneToOneField(User, primary_key=True, verbose_name='user', on_delete=models.CASCADE)
+    name = models.CharField(max_length=30, blank=True, null=True)
 
-    def __str__( self ):
-        return self.username
 
-class Message( models.Model ):
-    posiljatelj = models.ForeignKey( Korisnik, related_name= "posiljatelj", on_delete=models.CASCADE )
-    primatelj = models.ForeignKey( Korisnik, related_name= "primatelj", on_delete=models.CASCADE )
-    text = models.CharField( max_length= 4096 )
-    vrijeme = models.DateTimeField( )
-    procitano = models.BooleanField( default= False )
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+	if created:
+	    UserProfile.objects.create(user=instance)
+        
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
 
-    def __str__( self ):
-        return "{} to {}: {}".format(self.posiljatelj, self.primatelj, self.text)
+# class Message( models.Model ):
+#     posiljatelj = models.ForeignKey( Korisnik, related_name= "posiljatelj", on_delete=models.CASCADE )
+#     primatelj = models.ForeignKey( Korisnik, related_name= "primatelj", on_delete=models.CASCADE )
+#     text = models.CharField( max_length= 4096 )
+#     vrijeme = models.DateTimeField( )
+#     procitano = models.BooleanField( default= False )
+
+#     def __str__( self ):
+#         return "{} to {}: {}".format(self.posiljatelj, self.primatelj, self.text)
+
+class ThreadModel(models.Model):
+  user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+  receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+  has_unread = models.BooleanField(default=False)
+
+class MessageModel(models.Model):
+  thread = models.ForeignKey('ThreadModel', related_name='+', on_delete=models.CASCADE, blank=True, null=True)
+  sender_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+  receiver_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+  body = models.CharField(max_length=1000)
+  date = models.DateTimeField(default=timezone.now)
+  is_read = models.BooleanField(default=False)
