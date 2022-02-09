@@ -40,15 +40,15 @@ urlpatterns = [
 
 
 
-    # path('', v.registracija, name="registracija"),
-    # path('homepage_neregistrirani/', vm.homepage_neregistrirani, name='homepage_neregistrirani'),
-    # path('vozila_neregistrirani/', vm.vozila_neregistrirani, name='vozila_neregistrirani'),
-    # path('proizvodaci_neregistrirani/', vm.proizvodaci_neregistrirani, name='proizvodaci_neregistrirani'),
+    path('', v.registracija, name="registracija"),
+    path('homepage_neregistrirani/', vm.homepage_neregistrirani, name='homepage_neregistrirani'),
+    path('vozila_neregistrirani/', vm.vozila_neregistrirani, name='vozila_neregistrirani'),
+    path('proizvodaci_neregistrirani/', vm.proizvodaci_neregistrirani, name='proizvodaci_neregistrirani'),
 
-    # path('homepage_registrirani/', vm.homepage_registrirani, name='homepage_registrirani'),
-    # path('proizvodaci_registrirani/', vm.proizvodaci_registrirani, name='proizvodaci_registrirani'),
-    # path('novi_unos_vozilo/', vm.noviUnosVozilo, name="novi_unos_vozilo"),
-    # path('novi_unos_proizvodac/', vm.noviUnosProizvodac, name="novi_unos_proizvodaci"),
-    # re_path(r'^filter/$', vm.filter, name='filter'), 
-    # re_path(r'^filter_ne_registrirani/$', vm.filter_ne_registrirani, name='filter_ne_registrirani'), 
+    path('homepage_registrirani/', vm.homepage_registrirani, name='homepage_registrirani'),
+    path('proizvodaci_registrirani/', vm.proizvodaci_registrirani, name='proizvodaci_registrirani'),
+    path('novi_unos_vozilo/', vm.noviUnosVozilo, name="novi_unos_vozilo"),
+    path('novi_unos_proizvodac/', vm.noviUnosProizvodac, name="novi_unos_proizvodaci"),
+    re_path(r'^filter/$', vm.filter, name='filter'), 
+    re_path(r'^filter_ne_registrirani/$', vm.filter_ne_registrirani, name='filter_ne_registrirani'), 
 ]
