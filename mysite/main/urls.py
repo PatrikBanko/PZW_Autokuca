@@ -19,5 +19,6 @@ urlpatterns = [
     path('novi_unos_proizvodac/', views.noviUnosProizvodac, name="novi_unos_proizvodaci"),
     re_path(r'^filter/$', views.filter, name='filter'), 
     re_path(r'^filter_ne_registrirani/$', views.filter_ne_registrirani, name='filter_ne_registrirani'), 
+
 ]
 

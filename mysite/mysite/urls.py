@@ -18,6 +18,9 @@ from django.urls import path, include
 from register import views as v
 from main import views as vm
 from main.views import *
+
+from django.urls import re_path
+
 urlpatterns = [
     path('', include('main.urls')), #dodajemo urls
     path('admin/', admin.site.urls),
@@ -32,10 +35,20 @@ urlpatterns = [
     path('inbox/', ListThreads.as_view(), name='inbox'),
     path('inbox/create-thread', CreateThread.as_view(), name='create-thread'),
     path('inbox/<int:pk>/', ThreadView.as_view(), name='thread'),
-    path('inbox/<int:pk>/create-message/', CreateMessage.as_view(), name='create-message')
+    path('inbox/<int:pk>/create-message/', CreateMessage.as_view(), name='create-message'),
 
 
 
 
-    
+    # path('', v.registracija, name="registracija"),
+    # path('homepage_neregistrirani/', vm.homepage_neregistrirani, name='homepage_neregistrirani'),
+    # path('vozila_neregistrirani/', vm.vozila_neregistrirani, name='vozila_neregistrirani'),
+    # path('proizvodaci_neregistrirani/', vm.proizvodaci_neregistrirani, name='proizvodaci_neregistrirani'),
+
+    # path('homepage_registrirani/', vm.homepage_registrirani, name='homepage_registrirani'),
+    # path('proizvodaci_registrirani/', vm.proizvodaci_registrirani, name='proizvodaci_registrirani'),
+    # path('novi_unos_vozilo/', vm.noviUnosVozilo, name="novi_unos_vozilo"),
+    # path('novi_unos_proizvodac/', vm.noviUnosProizvodac, name="novi_unos_proizvodaci"),
+    # re_path(r'^filter/$', vm.filter, name='filter'), 
+    # re_path(r'^filter_ne_registrirani/$', vm.filter_ne_registrirani, name='filter_ne_registrirani'), 
 ]
