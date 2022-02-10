@@ -1,11 +1,32 @@
 {% include 'homepage_neregistrirani.html' %}
 {% block podaci %}
     <h2>Popis proizvođača:</h2>
-    {% for proizvodac in proizvodaci %}
-        <ul>
-            <li>Šifra proizvođača: {{proizvodac.sifra_proizvodaca}}</li>
-            <li>Naziv proizvođača: {{proizvodac.naziv_proizvodaca}}</li>
-        </ul>
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Šifra proizvođača</th>
+            <th>Naziv proizvođača</th>
+            
+        </tr>
+        {% for proizvodac in proizvodaci %}
+        <tr>
+            <td>{{proizvodac.sifra_proizvodaca}}</td>
+            <td>{{proizvodac.naziv_proizvodaca}}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
+<style>
+	table {
+		width: 30%;
+		border: 1px solid #000;
+	}
 
+	th,
+	td {
+		width: 25%;
+		text-align: left;
+		vertical-align: top;
+		border: 1px solid #000;
+	}
+</style>

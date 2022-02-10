@@ -2,16 +2,46 @@
 {% block podaci %}
     <h2>Popis vozila:</h2>
     
-    {% for vozilo in vozila %}
-        <ul>
-            <li>Šifra vozila: {{vozilo.sifra_vozila}}</li>
-            <li>Vrsta vozila: {{vozilo.vrsta_vozila}}</li>
-            <li>Naziv proizvođača: {{vozilo.naziv_proizvodaca}}</li>
-            <li>Model vozila: {{vozilo.model_vozila}}</li>
-            <li>Godina proizvodnje: {{vozilo.godina_proizvodnje}}</li>
-            <li>Kilometraža (km): {{vozilo.kilometraza}}</li>
-            <li>Boja: {{vozilo.boja}}</li>
-            <li>Cijena (€): {{vozilo.cijena}}</li>
-        </ul>
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Šifra vozila</th>
+            <th>Vrsta vozila</th>
+            <th>Naziv proizvođača</th>
+            <th>Model vozila</th>
+            <th>Godina proizvodnje</th>
+            <th>Kilometraža (km)</th>
+            <th>Boja</th>
+            <th>Cijena (€)</th>
+    
+            
+        </tr>
+        {% for vozilo in vozila %}
+        <tr>
+            <td>{{vozilo.sifra_vozila}}</td>
+            <td>{{vozilo.vrsta_vozila}}</td>
+            <td>{{vozilo.naziv_proizvodaca}}</td>
+            <td>{{vozilo.model_vozila}}</td>
+            <td>{{vozilo.godina_proizvodnje}}</td>
+            <td>{{vozilo.kilometraza}}</td>
+            <td>{{vozilo.boja}}</td>
+            <td>{{vozilo.cijena}}</td>
+    
+            
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
+<style>
+	table {
+		width: 40%;
+		border: 1px solid #000;
+	}
+
+	th,
+	td {
+		width: 25%;
+		text-align: left;
+		vertical-align: top;
+		border: 1px solid #000;
+	}
+</style>

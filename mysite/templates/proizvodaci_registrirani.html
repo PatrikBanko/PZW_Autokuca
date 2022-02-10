@@ -12,13 +12,16 @@
         <tr>
             <th>Šifra proizvođača</th>
             <th>Naziv proizvođača</th>
+            {% if user.is_superuser %}
             <th></th>
             <th></th>
+            {% endif %}
         </tr>
         {% for proizvodac in proizvodaci %}
         <tr>
             <td>{{proizvodac.sifra_proizvodaca}}</td>
             <td>{{proizvodac.naziv_proizvodaca}}</td>
+            {% if user.is_superuser %}
             <td>
                 <div id="update_proizvodac">
                     <button type="submit" class="btn btn-success">
@@ -33,6 +36,7 @@
                     </button>
                 </div>
             </td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>
