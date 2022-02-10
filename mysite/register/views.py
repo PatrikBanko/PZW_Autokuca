@@ -20,7 +20,8 @@ def registracija(response):
     else:
         form = UserCreationForm()
 
-    return render(response, "register/registracija.html", {"form":form})
+    return render(response, "register/registracija.html", {"form": form})
+
 
 def prijava(request):
     return render(request, "./registration/login.html")

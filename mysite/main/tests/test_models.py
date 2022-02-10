@@ -14,10 +14,8 @@ class TestProizvodac(TestCase):
 
 class TestVozilo(TestCase):
     def setUp(self):
-        naziv_p = Proizvodac.objects.create(
-            sifra_proizvodaca="some-proizvodac", naziv_proizvodaca="Test"
-        )
-        
+        naziv_p = Proizvodac.objects.create(sifra_proizvodaca="some-proizvodac", naziv_proizvodaca="Test")
+
         self.vozilo1 = Vozilo.objects.create(
             sifra_vozila="1",
             vrsta_vozila="automobil",

@@ -107,12 +107,13 @@ def updateVozilo(request, pk):
 def deleteVozilo(request, pk):
     vozilo = Vozilo.objects.get(sifra_vozila=pk)
 
-    if request.method=='POST':
+    if request.method == "POST":
         vozilo.delete()
-        return redirect('/vozila_registrirani')
+        return redirect("/vozila_registrirani")
 
     context = {"vozilo": vozilo}
     return render(request, "./delete_vozilo.html", context)
+
 
 def updateProizvodac(request, pk):
     proizvodac = Proizvodac.objects.get(sifra_proizvodaca=pk)
@@ -131,9 +132,9 @@ def updateProizvodac(request, pk):
 def deleteProizvodac(request, pk):
     proizvodac = Proizvodac.objects.get(sifra_proizvodaca=pk)
 
-    if request.method=='POST':
+    if request.method == "POST":
         proizvodac.delete()
-        return redirect('/proizvodaci_registrirani')
+        return redirect("/proizvodaci_registrirani")
 
     context = {"proizvodac": proizvodac}
     return render(request, "./delete_proizvodac.html", context)
@@ -142,72 +143,66 @@ def deleteProizvodac(request, pk):
 def filter(request):
     vozilo_list = Vozilo.objects.all()
     vozilo_filter = VoziloFilter(request.GET, queryset=vozilo_list)
-    return render(request, 'vozilo_list.html', {'filter': vozilo_filter})
+    return render(request, "vozilo_list.html", {"filter": vozilo_filter})
+
 
 def filter_ne_registrirani(request):
     vozilo_list = Vozilo.objects.all()
     vozilo_filter = VoziloFilter(request.GET, queryset=vozilo_list)
-    return render(request, 'vozilo_list_neregistrirani.html', {'filter': vozilo_filter})
+    return render(request, "vozilo_list_neregistrirani.html", {"filter": vozilo_filter})
 
-#ZA PORUKE
+
+# ZA PORUKE
 class ListThreads(View):
     def get(self, request, *args, **kwargs):
         threads = ThreadModel.objects.filter(Q(user=request.user) | Q(receiver=request.user))
 
-        context = {
-            'threads': threads
-        }
+        context = {"threads": threads}
 
-        return render(request, 'social/inbox.html', context)
+        return render(request, "social/inbox.html", context)
+
 
 class CreateThread(View):
     def get(self, request, *args, **kwargs):
         form = ThreadForm()
 
-        context = {
-            'form': form
-        }
+        context = {"form": form}
 
-        return render(request, 'social/create_thread.html', context)
+        return render(request, "social/create_thread.html", context)
 
     def post(self, request, *args, **kwargs):
         form = ThreadForm(request.POST)
 
-        username = request.POST.get('username')
+        username = request.POST.get("username")
 
         try:
             receiver = User.objects.get(username=username)
             if ThreadModel.objects.filter(user=request.user, receiver=receiver).exists():
                 thread = ThreadModel.objects.filter(user=request.user, receiver=receiver)[0]
-                return redirect('thread', pk=thread.pk)
+                return redirect("thread", pk=thread.pk)
             elif ThreadModel.objects.filter(user=receiver, receiver=request.user).exists():
                 thread = ThreadModel.objects.filter(user=receiver, receiver=request.user)[0]
-                return redirect('thread', pk=thread.pk)
+                return redirect("thread", pk=thread.pk)
 
             if form.is_valid():
-                thread = ThreadModel(
-                    user=request.user,
-                    receiver=receiver
-                )
+                thread = ThreadModel(user=request.user, receiver=receiver)
                 thread.save()
 
-                return redirect('thread', pk=thread.pk)
+                return redirect("thread", pk=thread.pk)
         except:
-            return redirect('create-thread')
+            return redirect("create-thread")
+
 
 class ThreadView(View):
     def get(self, request, pk, *args, **kwargs):
         form = MessageForm()
         thread = ThreadModel.objects.get(pk=pk)
         message_list = MessageModel.objects.filter(thread__pk__contains=pk)
-        
-        context = {
-            'thread': thread,
-            'form': form,
-            'message_list': message_list
-        }
 
-        return render(request, 'social/thread.html', context)
+        context = {"thread": thread, "form": form, "message_list": message_list}
+
+        return render(request, "social/thread.html", context)
+
 
 class CreateMessage(View):
     def post(self, request, pk, *args, **kwargs):
@@ -218,12 +213,8 @@ class CreateMessage(View):
             receiver = thread.receiver
 
         message = MessageModel(
-            thread=thread,
-            sender_user=request.user,
-            receiver_user=receiver,
-            body=request.POST.get('message')
+            thread=thread, sender_user=request.user, receiver_user=receiver, body=request.POST.get("message")
         )
 
         message.save()
-        return redirect('thread', pk=pk)
-
+        return redirect("thread", pk=pk)
